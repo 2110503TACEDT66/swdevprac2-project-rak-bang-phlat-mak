@@ -1,17 +1,18 @@
 .menucontainer{
-    height: 50px;
-    background-color: white;
+    height: 80px;
+    background-color: #334155;
     position: fixed;
     top: 0px;
     left: 0px;
     right: 0px;
     z-index: 30;
-    border-top: 1px solid lightgrey;
-    border-bottom: 1px solid lightgray;
+    /* border-top: 1px solid lightgrey; */
+    /* border-bottom: 1px solid lightgray; */
     display: flex;
     flex-direction: row;
-
+    box-shadow: 0 10px 30px 2px rgb(0 0 0 / 0.25);
 }
+
 .logoimg{
     height: 100%;
     width: auto;

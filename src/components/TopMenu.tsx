@@ -10,21 +10,21 @@ export default async function TopMenu() {
   return (
     <div className={styles.menucontainer}>
       <Image
-        src={"/img/chula.jpg"}
+        src={"/img/logo.jpg"}
         className={styles.logoimg}
         alt="logo"
         width={0}
         height={0}
         sizes="100vh"
       />
-      <TopMenuItem title="BookingPage" pageRef="/booking/" />
+      <div className="flex flex-row absolute right-10 top-0 h-full py-2 text-center">
+      <TopMenuItem title="Reservations" pageRef="/booking/" />
       {session ? (
-        <Link href="/api/auth/singnout">
-          <div> Singn-out of {session.user?.name}</div>
-        </Link>
+              <TopMenuItem title="Sign Out" pageRef="/api/auth/signout" />
       ) : (
-        <Link href="/api/auth/singnin">Sign-In</Link>
-      )}
+        <TopMenuItem title="Sign In" pageRef="/api/auth/signin"/>
+        )}
+       </div>
     </div>
   );
 }

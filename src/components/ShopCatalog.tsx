@@ -10,8 +10,8 @@ export default async function HospitalCatalog({
   hospitalsJson: Promise<HotelJson>;
 }) {
 
-
   const hospitalsJsonReady = await hospitalsJson;
+
   return (
     <>
       <div
@@ -25,12 +25,12 @@ export default async function HospitalCatalog({
         }}
       >
         {hospitalsJsonReady.data.map((hospitalItem) => (
-          <div className="w-1/5">
+          <div className="w-full my-10">
             <Link href={`/hospital/${hospitalItem.id}`}>
               <Card
                 hospitalName={hospitalItem.name}
-                
                 link={`/hospital/${hospitalItem.id}`}
+                imgSrc="/img/parlor.jpg"
               />{" "}
             </Link>
           </div>

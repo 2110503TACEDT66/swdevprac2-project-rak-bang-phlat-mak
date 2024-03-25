@@ -32,8 +32,6 @@ export default async function RootLayout({
         <TopMenu/>
         <div style={{marginTop:52}}>
           {children}
-
-
         </div>
         </NextAuthProvider>
 </ReduxProvider>

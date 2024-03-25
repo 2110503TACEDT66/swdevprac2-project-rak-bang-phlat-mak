@@ -1,7 +1,4 @@
 'use client'
-
-
-
 import { useSession } from 'next-auth/react'
 import styles from './banner.module.css'
 import Image from 'next/image'
@@ -9,9 +6,8 @@ import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 //import
 export default function Banner(){
-    const router=useRouter()
-    const [index , setIndex]=useState(0)
-    const cover = ['/img/cover.jpg','/img/cover2.jpg','/img/cover3.jpg','/img/cover4.jpg']
+    const router = useRouter()
+    const [index , setIndex] = useState(0)
     const {data :session} = useSession()
     console.log(session?.user.token)
     return(
@@ -19,32 +15,29 @@ export default function Banner(){
         */
         <div className={styles.banner} onClick={()=>{setIndex(index+1)}}>
             
-            <Image src={cover[index%4]} alt='cover' fill={true}
+            <Image src='/img/massage.jpg' alt='cover' fill={true}
             priority 
             style={{objectFit:'cover'}}
+            className="blur-md"
             />
             
             <div className={styles.bannerText}>
-                
-                <h1 >
-                Vaccine Service Center
+                <h1 className="text-7xl font-mono py-8 font-semibold inline-block bg-gradient-to-r from-slate-400 via-slate-700 to-slate-900 text-transparent bg-clip-text drop-shadow-md">
+                    Welcome to Our Massage Shop
                 </h1>
-                <p>
-                    มาฉีดวัคซีนกัน
-                </p>
-                <p>
-
-                </p>
+                <h3 className="text-2xl font-sans text-gray-900">
+                    Get started by registering and choosing the shop that you like from the bottom left button.
+                </h3>
             </div>
             {
-                session? <div className='z-30 absolute top-5 right-10 font-semibold text-cyan-800 text-xl'>
-                    Welcome {session.user?.name}</div>: null
+                session? 
+                <div className='z-30 absolute top-5 right-10 font-semibold text-cyan-800 text-xl'>Welcome {session.user?.name} </div>: null
             }
-            <button onClick={(e)=>{e.stopPropagation();   router.push('/hospital')}}
+    <button onClick={(e)=>{e.stopPropagation();   router.push('/hospital')}}
 
-       className='bg-white text-cyan-600 border border-cyan-600
-      font-semibold py-2 px-2 rounded z-30 absolute bottom-0 right-0
-      hover:bg-cyan-600 hover:text-white hover:border-tranparent'>Select Hospital</button>
+    className='bg-slate-100 text-xl text-slate-800
+      font-semibold py-3 px-3 rounded-lg z-30 fixed bottom-10 right-10 shadow-xl
+      hover:bg-cyan-600 hover:text-white hover:border-tranparent'>View Shops</button>
         </div>
     )
 }

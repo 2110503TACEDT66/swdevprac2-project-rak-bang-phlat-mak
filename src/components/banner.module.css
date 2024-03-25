@@ -3,7 +3,7 @@
     padding: 5px;
     margin: 0;
     width: 100vw;
-    height: 80vh;
+    height: 100vh;
     position: relative;
 
 }
@@ -12,5 +12,6 @@
     top: 100px;
     z-index: 20;
     text-align: center;
-    
+    font-family: Verdana, Geneva, Tahoma, sans-serif;    
+    font-weight: bold;
 }

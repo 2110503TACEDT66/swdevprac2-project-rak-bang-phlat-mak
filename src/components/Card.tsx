@@ -1,10 +1,4 @@
-
-
-
 import Image from "next/image";
-
-
-
 
 import InteractiveCard from "./InteractiveCard";
 import { Rating, Typography } from "@mui/material";
@@ -15,16 +9,16 @@ import { Rating, Typography } from "@mui/material";
 //export default function ProductCard({hospitalName,imgSrc,onCompare}:{hospitalName:string,imgSrc:string,onCompare:Function}){
 export default function Card({
   hospitalName,
-  
   onRating,
   value,
   link, //onCarSelected
+  imgSrc
 }: {
   hospitalName: string;
-  
   onRating?: Function;
   value?: number | null;
   link: string;
+  imgSrc: string;
   //onCarSelected :Function
 }) {
   //const router = useRouter()
@@ -67,13 +61,24 @@ export default function Card({
 
   return (
     <InteractiveCard contentName={hospitalName} link={link} /*onCarSelected={()=>{onCarSelected}}*/>
-      <div className="w-full h-[70%] relative rounded-t-lg">
-        
-      </div>
+      <div className="flex flex-row h-full">
+        <div className="w-1/4 h-full relative rounded-t-lg">
+          <Image src={imgSrc} 
+                alt='Massage Shop Picture'
+                fill={true}
+                className='object-cover rounded-t-lg'
+          />
+        </div>
 
-      <div className="w-full h-[30%] p-[10px]">
-        <div>{hospitalName}</div>
-        {
+      <div className="w-3/4 h-full p-[10px]">
+        <div className="text-left pl-5">
+        <div className="text-2xl ">
+          {hospitalName}
+        </div>
+        </div>
+        
+        
+        {/* {
           onRating? <Rating
           name={hospitalName + " Rating"}
           id={hospitalName + " Rating"}
@@ -86,9 +91,10 @@ export default function Card({
             e.stopPropagation();
           }}
         /> :''
-        }
+        } */}
         
       </div>
+    </div>
     </InteractiveCard>
   );
 } //
