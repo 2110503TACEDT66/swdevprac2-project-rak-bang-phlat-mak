@@ -22,7 +22,9 @@ export default async function TopMenu() {
       {session ? (
               <TopMenuItem title="Sign Out" pageRef="/api/auth/signout" />
       ) : (
+        <>
         <TopMenuItem title="Sign In" pageRef="/api/auth/signin"/>
+        <TopMenuItem title="Register" pageRef="/signup"/></>
         )}
        </div>
     </div>
