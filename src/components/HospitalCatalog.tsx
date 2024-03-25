@@ -1,4 +1,4 @@
-import { HospitalJson } from "../../interface";
+import { HospitalJson, HotelJson } from "../../interface";
 import Card from "./Card";
 import Link from "next/link";
 
@@ -7,7 +7,7 @@ import Link from "next/link";
 export default async function HospitalCatalog({
   hospitalsJson,
 }: {
-  hospitalsJson: Promise<HospitalJson>;
+  hospitalsJson: Promise<HotelJson>;
 }) {
 
 
@@ -29,7 +29,7 @@ export default async function HospitalCatalog({
             <Link href={`/hospital/${hospitalItem.id}`}>
               <Card
                 hospitalName={hospitalItem.name}
-                imgSrc={hospitalItem.picture}
+                
                 link={`/hospital/${hospitalItem.id}`}
               />{" "}
             </Link>

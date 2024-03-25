@@ -15,13 +15,13 @@ import { Rating, Typography } from "@mui/material";
 //export default function ProductCard({hospitalName,imgSrc,onCompare}:{hospitalName:string,imgSrc:string,onCompare:Function}){
 export default function Card({
   hospitalName,
-  imgSrc,
+  
   onRating,
   value,
   link, //onCarSelected
 }: {
   hospitalName: string;
-  imgSrc: string;
+  
   onRating?: Function;
   value?: number | null;
   link: string;
@@ -68,14 +68,7 @@ export default function Card({
   return (
     <InteractiveCard contentName={hospitalName} link={link} /*onCarSelected={()=>{onCarSelected}}*/>
       <div className="w-full h-[70%] relative rounded-t-lg">
-        <Image
-          src={imgSrc}
-          alt="Product"
-          fill={true}
-          style={{ objectFit: "cover" }}
-          //   height={200}
-          //   width={100}
-        />
+        
       </div>
 
       <div className="w-full h-[30%] p-[10px]">

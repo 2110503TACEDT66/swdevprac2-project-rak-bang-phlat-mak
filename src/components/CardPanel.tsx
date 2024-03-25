@@ -49,7 +49,7 @@ export default function CardPanel(){
                         <div  className="w-1/5" >
                             <Link href={`/hospital/${hospitalItem.hid}`}>
                         
-                        <Card hospitalName={hospitalItem.name} imgSrc={hospitalItem.image} value={ratingList.get(hospitalItem.name) ?? 0}
+                        <Card hospitalName={hospitalItem.name}  value={ratingList.get(hospitalItem.name) ?? 0}
               onRating={(hospital:string, ratings:number | null)=>ratingChange({type:'add', hospitalName:hospital, rating:ratings}) }
               link={`/hospital/${hospitalItem.hid}`} //onCarSelected=(()=>{router.push(`/hospital/${hospitalItem.hid}`)})
               /></Link>

@@ -1,8 +1,8 @@
 import { createSlice,PayloadAction } from "@reduxjs/toolkit";
-import { BookingItem } from "../../../interface";
+import { BookingItem, HotelBooking } from "../../../interface";
 
 type BookState = {
-    bookItems:BookingItem[]
+    bookItems:HotelBooking[]
 }
 
 const initialState:BookState={bookItems:[]}
@@ -11,9 +11,9 @@ export const bookSlice = createSlice({
     name:"bookItems",
     initialState,
     reducers:{
-        addBooking :(state,action:PayloadAction<BookingItem>)=>{
+        addBooking :(state,action:PayloadAction<HotelBooking>)=>{
             const returnItem= state.bookItems.filter(obj=>{
-                return(obj.id !== action.payload.id)
+                return(obj._id !== action.payload._id)
             })
             state.bookItems=returnItem
             state.bookItems.push(action.payload)
@@ -21,7 +21,7 @@ export const bookSlice = createSlice({
         },
         removeBooking:(state,action:PayloadAction<string>)=>{
             const returnItem= state.bookItems.filter(obj=>{
-                return(obj.id !== action.payload)
+                return(obj._id !== action.payload)
             })
             state.bookItems=returnItem
 
