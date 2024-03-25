@@ -12,13 +12,13 @@ export default function Card({
   onRating,
   value,
   link, //onCarSelected
-  imgSrc
+  //imgSrc
 }: {
   hospitalName: string;
   onRating?: Function;
   value?: number | null;
   link: string;
-  imgSrc: string;
+  //imgSrc: string;
   //onCarSelected :Function
 }) {
   //const router = useRouter()
@@ -63,11 +63,11 @@ export default function Card({
     <InteractiveCard contentName={hospitalName} link={link} /*onCarSelected={()=>{onCarSelected}}*/>
       <div className="flex flex-row h-full">
         <div className="w-1/4 h-full relative rounded-t-lg">
-          <Image src={imgSrc} 
+          {/*<Image src={imgSrc} 
                 alt='Massage Shop Picture'
                 fill={true}
                 className='object-cover rounded-t-lg'
-          />
+  />*/}
         </div>
 
       <div className="w-3/4 h-full p-[10px]">

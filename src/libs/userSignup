@@ -1,12 +1,15 @@
-export default async function userLogin(userEmail:string,userPassword:string){
+export default async function userSignup(name:string,tel:string,email:string,password:string,role:string){
     const response = await fetch("http://localhost:5000/api/v1/auth/login",{
         method:"POST",
         headers:{
             "Content-Type":"application/json",
         },
         body:JSON.stringify({
-            email: userEmail,
-            password: userPassword
+            name:{name},
+            tel:{tel},
+            email:{email},
+            password:{password},
+            role:{role}
         }),
     })
     if(!response.ok){

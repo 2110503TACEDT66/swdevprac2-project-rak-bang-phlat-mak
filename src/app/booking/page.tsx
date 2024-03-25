@@ -3,12 +3,14 @@ import { TextField } from "@mui/material";
 import DateReserve from "@/components/DateReserve";
 import { useState } from "react";
 import { Dayjs } from "dayjs";
-import { BookingItem } from "../../../interface";
+import {  HotelBooking } from "../../../interface";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/redux/store";
 import { addBooking } from "@/redux/features/bookSlice";
+import { useSession } from "next-auth/react";
 
 export default function BookingPage() {
+  const {data :session} = useSession()
   const [bookingDate, setBookingDate] = useState<Dayjs | null>(null);
   const [location, setLocation] = useState<string | null>(null);
   const dispatch = useDispatch<AppDispatch>()
@@ -20,12 +22,19 @@ export default function BookingPage() {
       location &&
       document.getElementById("Citizen ID")?.nodeValue?.toString
     ) {
-      const item: BookingItem = {
-        name: document.getElementById("Name")?.nodeValue as string,
-        surname: document.getElementById("Lastname")?.nodeValue as string,
-        id: document.getElementById("Citizen ID")?.nodeValue as string,
-        hospital: location,
-        bookDate: bookingDate.toString(),
+      const item: HotelBooking = {
+        _id: session?.user._id as string,
+        resDate: bookingDate.toString(),
+        user: session?.user.name as string,
+        shop: location,
+        createdAt: Date.now.toString(),
+        //string,
+        __v: 0
+        //name: document.getElementById("Name")?.nodeValue as string,
+        //surname: document.getElementById("Lastname")?.nodeValue as string,
+        //id: document.getElementById("Citizen ID")?.nodeValue as string,
+        //hospital: location,
+        //bookDate: 
       };
       dispatch(addBooking(item))
     }

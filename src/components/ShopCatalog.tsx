@@ -30,7 +30,7 @@ export default async function HospitalCatalog({
               <Card
                 hospitalName={hospitalItem.name}
                 link={`/hospital/${hospitalItem.id}`}
-                imgSrc="/img/parlor.jpg"
+                //imgSrc="/img/parlor.jpg"
               />{" "}
             </Link>
           </div>
