@@ -34,7 +34,6 @@ export default async function CardReservation({shop, resDate, token, resID}:{sho
         } catch(error) {
             console.log(error)
         }
-        revalidatePath('/booking')
     }
 
     const handlerEdit = () => {
