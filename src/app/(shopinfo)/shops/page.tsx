@@ -1,5 +1,4 @@
 'use client'
-import CardPanel from "@/components/CardPanel";
 import ShopCatalog from "@/components/ShopCatalog";
 import getHospitals from "@/libs/getHospitals";
 import { Suspense } from "react";
@@ -21,7 +20,6 @@ export default  function Hospital(){
 
 /*
 
-<CardPanel/>
 
 
 
