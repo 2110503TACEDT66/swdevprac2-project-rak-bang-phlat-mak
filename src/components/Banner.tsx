@@ -35,7 +35,7 @@ export default function Banner(){
                  </div>: null
             }
             
-    <button onClick={(e)=>{e.stopPropagation(); router.push('/hospital')}}
+    <button onClick={(e)=>{e.stopPropagation(); router.push('/shops')}}
 
     className='bg-slate-100 text-xl text-slate-800
       font-semibold py-3 px-3 rounded-lg z-30 fixed bottom-10 right-10 shadow-xl

@@ -5,7 +5,9 @@ import { BookingItem, HotelBooking } from "../../interface"
 
 
 export default function BookingList(){
+
     const hospitalItems = useAppSelector((state:any)=>state.bookSlice.bookItems)
+    
     return(
         <>
         {
@@ -15,8 +17,6 @@ export default function BookingList(){
                     <div className="text-sm">{bookingItem.user} </div>
                     <div className="text-sm">{bookingItem.resDate} </div>
                     <div className="text-sm">{bookingItem.shop} </div>
-                    <div className="text-sm">{bookingItem.createdAt} </div>
-                    
                 </div>
             ))
         }

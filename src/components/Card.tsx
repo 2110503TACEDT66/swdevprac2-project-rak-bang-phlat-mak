@@ -59,7 +59,7 @@ export default async function Card({
             </div>
           </div>
       </div>
-      <Link href={`/hospital/${HospitalDetail.data.id}`} className="w-1/5 h-auto bg-slate-800 rounded-xl hover:bg-slate-600">
+      <Link href={`/shops/${HospitalDetail.data.id}`} className="w-1/5 h-auto bg-slate-800 rounded-xl hover:bg-slate-600">
             <div className="text-slate-100 text-4xl h-full flex items-center justify-center">
                 Reserve!
             </div>
