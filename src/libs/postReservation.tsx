@@ -1,7 +1,7 @@
 export default async function postReservation(user:string, shop:string, resDate:string, token:string){
     console.log(process.env.NEXT_PUBLIC_BACKEND_URL)
 
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/reservations`, {
+    const response = await fetch(`${process.env.BACKEND_URL}/api/v1/reservations`, {
         method:"POST",
         headers:{
             "Content-Type":"application/json",

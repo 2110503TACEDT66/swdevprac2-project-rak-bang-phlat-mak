@@ -1,5 +1,5 @@
 export default async function userSignup(name:string,tel:string,email:string,password:string){
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/auth/register`,{
+    const response = await fetch(`${process.env.BACKEND_URL}/api/v1/auth/register`,{
         method:"POST",
         headers:{
             "Content-Type":"application/json",

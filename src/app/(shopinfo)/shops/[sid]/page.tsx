@@ -1,9 +1,6 @@
 'use client'
-import DateReserve from "@/components/DateReserve"
-import TextField from '@mui/material/TextField';
-import { AppDispatch } from "@/redux/store";
 import { useDispatch } from "react-redux";
-import { SetStateAction, useRef, useState } from "react";
+import { useState } from "react";
 import dayjs, { Dayjs } from "dayjs";
 import { useParams, useRouter } from "next/navigation";
 import postReservation from "@/libs/postReservation";
@@ -11,12 +8,10 @@ import { useSession } from "next-auth/react";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
-import { dbConnect } from "@/db/dbConnect";
-import addReservation from "@/libs/addReservation";
-import Reservation from "@/db/models/Reservation";
+import { Link } from "@mui/material";
+
 
 export default function Booking () {
-    const router = useRouter()
     const {data:session} = useSession()
     const token = session?.user.token
     console.log(token)
@@ -24,8 +19,6 @@ export default function Booking () {
     console.log(userID)
     const shopID = useParams().sid.toString();
     console.log(shopID)
-
-    const dispatch = useDispatch();
 
     const [date, setDate] = useState<Dayjs|null>(null)
 
@@ -58,10 +51,12 @@ export default function Booking () {
                     </form>
                 </div>
             </div>
-            <button name="Reserve" className="block rounded-md bg-slate-800 hover:bg-slate-600 px-3 py-2 text-white shadow-sm"
-            onClick={handlerSubmit}>
-                Reserve
-            </button>
+            <Link href="/booking">
+                <button name="Reserve" className="block rounded-md bg-slate-800 hover:bg-slate-600 px-3 py-2 text-white shadow-sm"
+                onClick={handlerSubmit}>
+                    Reserve
+                </button>
+            </Link>
         </main>
     )
 }

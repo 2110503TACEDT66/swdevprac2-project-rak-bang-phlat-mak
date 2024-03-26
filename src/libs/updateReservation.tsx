@@ -1,7 +1,7 @@
 export default async function updateReservation(token:string, resID:string ,resDate:string){
     console.log(process.env.NEXT_PUBLIC_BACKEND_URL)
 
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/reservations/${resID}`, {
+    const response = await fetch(`${process.env.BACKEND_URL}/api/v1/reservations/${resID}`, {
         method:"PUT",
         headers:{
             "Content-Type":"application/json",

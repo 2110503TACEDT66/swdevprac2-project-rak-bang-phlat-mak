@@ -1,5 +1,4 @@
 import getReservations from "@/libs/getReservations";
-import { useSession } from "next-auth/react";
 import ReservationList from "@/components/ReservationList";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/route";
