@@ -24,28 +24,20 @@ export interface BookingItem {
   hospital: string,
   bookDate: string
 }
-export interface HotelItem {
+export interface Shop {
   _id: string,//
   name: string,//
   address: string,//
   tel: string,//
   openclose: string,
   __v: number,//
-  reservations: HotelBooking[],//
+  reservations: ReservationItem[],//
   id: string  
 }
 
-export interface HotelBooking {
+export interface ReservationItem {
   _id: string,
   resDate: string,
   user: string,
   shop: string,
-  createdAt: string,
-  __v: number
-}
-
-export interface HotelJson{
-  success: true,
-  count: 25,
-  data: HotelItem[]
 }

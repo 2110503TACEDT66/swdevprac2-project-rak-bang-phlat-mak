@@ -1,8 +1,8 @@
 import { createSlice,PayloadAction } from "@reduxjs/toolkit";
-import { BookingItem, HotelBooking } from "../../../interface";
+import { ReservationItem } from "../../../interface";
 
 type BookState = {
-    bookItems:HotelBooking[]
+    bookItems:ReservationItem[]
 }
 
 const initialState:BookState={bookItems:[]}
@@ -11,7 +11,7 @@ export const bookSlice = createSlice({
     name:"bookItems",
     initialState,
     reducers:{
-        addBooking :(state,action:PayloadAction<HotelBooking>)=>{
+        addBooking :(state,action:PayloadAction<ReservationItem>)=>{
             const returnItem= state.bookItems.filter(obj=>{
                 return(obj._id !== action.payload._id)
             })

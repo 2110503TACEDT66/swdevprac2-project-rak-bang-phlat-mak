@@ -9,6 +9,7 @@ export default async function TopMenu() {
   const session = await getServerSession(authOptions);
   return (
     <div className={styles.menucontainer}>
+      <Link href={process.env.FRONTEND_URL}>
       <Image
         src={"/img/logo.jpg"}
         className={styles.logoimg}
@@ -17,12 +18,13 @@ export default async function TopMenu() {
         height={0}
         sizes="100vh"
       />
+      </Link>
       <div className="flex flex-row absolute right-10 top-0 h-full py-2 text-center">
       <TopMenuItem title="Reservations" pageRef="/booking/" />
       {session ? (
               <TopMenuItem title="Sign Out" pageRef="/api/auth/signout" />
       ) : (
-        <TopMenuItem title="Register" pageRef="/api/auth/signin"/>
+        <TopMenuItem title="Register" pageRef="/signup"/>
         )}
        </div>
     </div>

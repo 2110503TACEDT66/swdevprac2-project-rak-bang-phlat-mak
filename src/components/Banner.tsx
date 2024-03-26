@@ -39,7 +39,7 @@ export default function Banner(){
 
     className='bg-slate-100 text-xl text-slate-800
       font-semibold py-3 px-3 rounded-lg z-30 fixed bottom-10 right-10 shadow-xl
-      hover:bg-cyan-600 hover:text-white hover:border-tranparent'>View Shops</button>
+      hover:bg-slate-600 hover:text-white hover:border-tranparent'>View Shops</button>
         </div>
     )
 }

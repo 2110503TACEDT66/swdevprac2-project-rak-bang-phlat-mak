@@ -7,6 +7,8 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
 import { Select, Menu, MenuItem } from "@mui/material"
 import { useState } from "react"
 import { Dayjs } from "dayjs"
+import getHospitals from "@/libs/getHospitals"
+import { HotelJson } from "../../interface"
 
 
 export default function LocationDateReserve({onDateChange,onLocationChange}:{onDateChange:Function,onLocationChange:Function}){
@@ -18,9 +20,13 @@ export default function LocationDateReserve({onDateChange,onLocationChange}:{onD
             <Select variant="standard" name="location" id="location" value={location} onChange={(e)=>{setLocation(e.target.value); onLocationChange(e.target.value)}}
             className="h-[2em] w-[200px]">
                 
-                <MenuItem value="Chula ">Chulalongkorn Hospital</MenuItem>
-                <MenuItem value=" Rajavithi"> Rajavithi Hospital </MenuItem>
-                <MenuItem value="Thammasat">Thammasat University Hospital</MenuItem>
+                
+                {hotelsJsonReady.data.map((hotelItem)=>(
+                    <>
+                    <MenuItem value={hotelItem.name}>{hotelItem.name}</MenuItem>
+                    </>
+                ))}
+                
             </Select>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DatePicker className="bg-white"

@@ -37,7 +37,7 @@ export default async function Card({
                 alt='Massage Shop Picture'
                 fill={true}
                 className='object-cover rounded-t-lg'
-          />
+  />
         </div>
 
         <div className="w-3/5 h-auto p-[10px]">
