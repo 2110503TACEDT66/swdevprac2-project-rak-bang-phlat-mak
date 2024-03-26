@@ -2,15 +2,17 @@
 import getHospital from "@/libs/getHospital"
 import { Shop } from "../../interface"
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import { ClockIcon } from "@mui/x-date-pickers";
 import { PhoneAndroid } from "@mui/icons-material";
 import QueryBuilderIcon from '@mui/icons-material/QueryBuilder';
 import deleteReservation from "@/libs/deleteReservation";
 import updateReservation from "@/libs/updateReservation";
-import { useState } from "react";
-import dayjs, { Dayjs } from "dayjs";
+import { useRef, useState } from "react";
 import { TextField } from "@mui/material";
-import { revalidatePath, revalidateTag } from "next/cache";
+import dayjs from "dayjs";
+
+interface dateRef {
+    value: string;
+}
 
 export default async function CardReservation({shop, resDate, token, resID}:{shop:Shop, resDate:string, token:string, resID:string}) {
     
@@ -27,6 +29,8 @@ export default async function CardReservation({shop, resDate, token, resID}:{sho
     const [date, setDate] = useState<string>()
     const [editMode, setEditMode] = useState<boolean>(false)
 
+    const dateRef = useRef<dateRef>()
+
     const handlerDelete = () => {
         try {
             console.log(token)
@@ -37,17 +41,19 @@ export default async function CardReservation({shop, resDate, token, resID}:{sho
     }
 
     const handlerEdit = () => {
-        if (date) {
-        try {
-            updateReservation(token, resID, date)
-        } catch(error) {
-            console.log(error)
-        } finally {
-            setEditMode(false)
-        }
-        } else {
-            alert("Why would you press edit, but not change the date?")
-        }
+            if (dateRef.current) {
+                // alert(`this is a console log${dateRef.current.value}`)
+                const formattedDate = dayjs(dateRef.current.value).format("YYYY-MM-DD[T]HH:mm:ss.SSS")
+                try {
+                    updateReservation(token, resID, formattedDate)
+                } catch(error) {
+                    console.log(error)
+                } finally {
+                    setEditMode(false)
+                }
+                } else {
+                    alert("Why would you press edit, but not change the date?")
+            }
     }
 
     return (
@@ -77,19 +83,16 @@ export default async function CardReservation({shop, resDate, token, resID}:{sho
                     {editMode?     
                         <div className="flex flex-row mx-5">
                         <TextField name="editTime" id="editTime" className="rounded-2xl bg-slate-100 shadow-inner"
-                        onChange={(e)=>{
-                            const parsedDate = dayjs(e.target.value).format("YYYY-MM-DD[T]HH:mm:ss.SSS[Z]")
-                            setDate(parsedDate)
-                                }}
-                        defaultValue={fullTime}>
-                        </TextField>
+                        inputRef={dateRef}
+                        placeholder="YYYY-MM-DD HH:MM"
+                        />
                         <button className="text-sm text-slate-200 bg-slate-500 px-4 rounded-lg shadow-[10px_10px_10px_-10px_rgba(0,0,0,0.5)] hover:bg-slate-700 hover:text-slate-50 mx-5"
                         onClick={()=>{
                             handlerEdit()
                         }}>Submit</button>
                         <button className="text-sm text-rose-100 bg-rose-500 px-4 rounded-lg shadow-[10px_10px_10px_-10px_rgba(0,0,0,0.5)] hover:bg-rose-700 hover:text-pink-50"
                         onClick={(e)=>{
-                            setEditMode(false); e.stopPropagation(); e.preventDefault();
+                            setEditMode(false);
                         }}>Cancle</button>
                         </div>
                     

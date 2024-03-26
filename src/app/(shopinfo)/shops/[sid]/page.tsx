@@ -24,7 +24,7 @@ export default function Booking () {
 
     const handlerSubmit = () => {
         if (userID && shopID && date && token) {
-            const formattedDate = dayjs(date).format("YYYY-MM-DD[T]HH:mm:ss.SSS[Z]")
+            const formattedDate = dayjs(date).format("YYYY-MM-DD[T]HH:mm:ss.SSS")
             console.log(formattedDate)
             try {
             postReservation(userID, shopID, formattedDate, token)

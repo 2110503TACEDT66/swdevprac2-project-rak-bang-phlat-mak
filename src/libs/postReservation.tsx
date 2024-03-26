@@ -14,6 +14,9 @@ export default async function postReservation(user:string, shop:string, resDate:
         }),
     })
     
+    console.log(`resDate : ${resDate}`)
+    console.log(`shop : ${shop}`)
+    console.log(`user: ${user}`)
     if(!response.ok){
         console.log(await response.json())
         throw new Error("Failed to add new reservation")
