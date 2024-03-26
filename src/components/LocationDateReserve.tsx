@@ -9,12 +9,13 @@ import { useState } from "react"
 import { Dayjs } from "dayjs"
 
 
-export default function LocationDateReserve({onDateChange,onLocationCange}:{onDateChange:Function,onLocationCange:Function}){
+export default function LocationDateReserve({onDateChange,onLocationChange}:{onDateChange:Function,onLocationChange:Function}){
     const [bookingDate,setBookingDate] = useState<Dayjs|null>(null)
     const [location, setLocation]=useState('BKK')
+    
     return(
         <div className=" rounded-lg ">
-            <Select variant="standard" name="location" id="location" value={location} onChange={(e)=>{setLocation(e.target.value); onLocationCange(e.target.value)}}
+            <Select variant="standard" name="location" id="location" value={location} onChange={(e)=>{setLocation(e.target.value); onLocationChange(e.target.value)}}
             className="h-[2em] w-[200px]">
                 
                 <MenuItem value="Chula ">Chulalongkorn Hospital</MenuItem>

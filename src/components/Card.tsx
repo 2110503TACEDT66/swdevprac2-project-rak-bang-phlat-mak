@@ -1,68 +1,38 @@
 import Image from "next/image";
 
 import InteractiveCard from "./InteractiveCard";
-import { Rating, Typography } from "@mui/material";
+import { Icon, Rating, Typography } from "@mui/material";
+import getHospital from "@/libs/getHospital";
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import { PhoneAndroid } from "@mui/icons-material";
+import { ClockIcon } from "@mui/x-date-pickers";
+import Link from "next/link";
 //import { Router } from "next/router";
 //import { useRouter } from "next/navigation";
 
-
-//export default function ProductCard({hospitalName,imgSrc,onCompare}:{hospitalName:string,imgSrc:string,onCompare:Function}){
-export default function Card({
+export default async function Card({
   hospitalName,
   onRating,
   value,
-  link, //onCarSelected
-  imgSrc
+  link, 
+  imgSrc,
+  id
 }: {
   hospitalName: string;
   onRating?: Function;
   value?: number | null;
   link: string;
   imgSrc: string;
+  id: string
   //onCarSelected :Function
 }) {
-  //const router = useRouter()
-  function onCarSelected(){
-    //router.push(link)
-    
-  }
-  
-  // const compareRedeucer =(ratingList:Map<string,number>, action:{type:string; hospitalName:string;rating:number})=>{
-  //     switch(action.type){
-  //         case 'add':{
-  //             ratingList.set(action.hospitalName,action.rating)
-  //             return(new Map(ratingList))
-  //             //return(ratingList)
-  //         }
-  //         case 'remove':{
-  //             ratingList.delete(action.hospitalName);
-  //             return(new Map(ratingList))
-  //         }
-  //         // case 'new':{
-  //         //     return(new Map([
-  //         //         ['Chulalongkorn Hospital', 5],
-  //         //         ['Rajavithi Hospital', 5],+
-  //         //         ['Thammasat University Hospital', 5],
-  //         //         ]))
-  //         // }
-  //         default: return(ratingList)
-  //     }
 
-  //}
-  // const[ratingList,ratingChange]=useReducer(compareRedeucer,new Map<string,number>([
-  //     ['Chulalongkorn Hospital', 5],
-  //     ['Rajavithi Hospital', 5],
-  //     ['Thammasat University Hospital', 5],
-  //     ]))
-
-  // function onCarSelected(){
-  //     alert("You Select    " + carName)
-  // }
+  const HospitalDetail = await getHospital(id);
 
   return (
-    <InteractiveCard contentName={hospitalName} link={link} /*onCarSelected={()=>{onCarSelected}}*/>
-      <div className="flex flex-row h-full">
-        <div className="w-1/4 h-full relative rounded-t-lg">
+    <InteractiveCard contentName={hospitalName} link={link}/*onCarSelected={()=>{onCarSelected}}*/>
+      <div className="flex flex-row h-auto">
+        <div className="w-1/5 h-auto relative rounded-t-lg">
           <Image src={imgSrc} 
                 alt='Massage Shop Picture'
                 fill={true}
@@ -70,31 +40,31 @@ export default function Card({
           />
         </div>
 
-      <div className="w-3/4 h-full p-[10px]">
-        <div className="text-left pl-5">
-        <div className="text-2xl ">
-          {hospitalName}
-        </div>
-        </div>
-        
-        
-        {/* {
-          onRating? <Rating
-          name={hospitalName + " Rating"}
-          id={hospitalName + " Rating"}
-          data-testid={hospitalName + " Rating"}
-          value={value}
-          onChange={(e, newValue) => {
-            onRating(hospitalName, newValue);
-          }}
-          onClick={(e) => {
-            e.stopPropagation();
-          }}
-        /> :''
-        } */}
-        
+        <div className="w-3/5 h-auto p-[10px]">
+          <div className="text-left pl-5">
+            <div className="text-3xl">
+              {hospitalName}
+            </div>
+            <div className="text-2xl my-10">
+              <LocationOnIcon className="mr-5"/>
+              {HospitalDetail.data.address}
+            </div>
+            <div className="text-2xl my-10">
+              <PhoneAndroid className="mr-5"/>
+              {HospitalDetail.data.tel}
+            </div>
+            <div className="text-2xl my-10">
+              <ClockIcon className="mr-5"/>
+              {HospitalDetail.data.openclose}
+            </div>
+          </div>
       </div>
-    </div>
+      <Link href={`/hospital/${HospitalDetail.data.id}`} className="w-1/5 h-auto bg-slate-800 rounded-xl hover:bg-slate-600">
+            <div className="text-slate-100 text-4xl h-full flex items-center justify-center">
+                Reserve!
+            </div>
+          </Link>
+      </div>
     </InteractiveCard>
   );
 } //
@@ -132,3 +102,51 @@ export default function Card({hospitalName, imgSrc, onRating, value} :
 }
 
 */
+
+  //const router = useRouter()
+  // const compareRedeucer =(ratingList:Map<string,number>, action:{type:string; hospitalName:string;rating:number})=>{
+  //     switch(action.type){
+  //         case 'add':{
+  //             ratingList.set(action.hospitalName,action.rating)
+  //             return(new Map(ratingList))
+  //             //return(ratingList)
+  //         }
+  //         case 'remove':{
+  //             ratingList.delete(action.hospitalName);
+  //             return(new Map(ratingList))
+  //         }
+  //         // case 'new':{
+  //         //     return(new Map([
+  //         //         ['Chulalongkorn Hospital', 5],
+  //         //         ['Rajavithi Hospital', 5],+
+  //         //         ['Thammasat University Hospital', 5],
+  //         //         ]))
+  //         // }
+  //         default: return(ratingList)
+  //     }
+
+  //}
+  // const[ratingList,ratingChange]=useReducer(compareRedeucer,new Map<string,number>([
+  //     ['Chulalongkorn Hospital', 5],
+  //     ['Rajavithi Hospital', 5],
+  //     ['Thammasat University Hospital', 5],
+  //     ]))
+
+  // function onCarSelected(){
+  //     alert("You Select    " + carName)
+  // }
+
+          {/* {
+          onRating? <Rating
+          name={hospitalName + " Rating"}
+          id={hospitalName + " Rating"}
+          data-testid={hospitalName + " Rating"}
+          value={value}
+          onChange={(e, newValue) => {
+            onRating(hospitalName, newValue);
+          }}
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+        /> :''
+        } */}

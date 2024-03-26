@@ -8,11 +8,11 @@ import { useState } from 'react'
 export default function Banner(){
     const router = useRouter()
     const [index , setIndex] = useState(0)
-    const {data :session} = useSession()
-    console.log(session?.user.token)
+    const {data:session} = useSession()
+
+    console.log(session?.user)
+    
     return(
-        /*
-        */
         <div className={styles.banner} onClick={()=>{setIndex(index+1)}}>
             
             <Image src='/img/massage.jpg' alt='cover' fill={true}
@@ -26,14 +26,16 @@ export default function Banner(){
                     Welcome to Our Massage Shop
                 </h1>
                 <h3 className="text-2xl font-sans text-gray-900">
-                    Get started by registering and choosing the shop that you like from the bottom left button.
+                    Get started by registering and choosing the shop that you like from the bottom right button.
                 </h3>
             </div>
             {
                 session? 
-                <div className='z-30 absolute top-5 right-10 font-semibold text-cyan-800 text-xl'>Welcome {session.user?.name} </div>: null
+                <div className='z-25 absolute top-10 right-10 font-semibold text-slate-800 text-3xl'>Welcome, {session.user?.name}!
+                 </div>: null
             }
-    <button onClick={(e)=>{e.stopPropagation();   router.push('/hospital')}}
+            
+    <button onClick={(e)=>{e.stopPropagation(); router.push('/hospital')}}
 
     className='bg-slate-100 text-xl text-slate-800
       font-semibold py-3 px-3 rounded-lg z-30 fixed bottom-10 right-10 shadow-xl
@@ -41,12 +43,3 @@ export default function Banner(){
         </div>
     )
 }
-
-
-/*
-
-onClick={
-        }
-
-
-*/

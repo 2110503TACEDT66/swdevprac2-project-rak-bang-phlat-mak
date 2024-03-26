@@ -13,10 +13,24 @@ export default function Home() {
     </main>
   )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//EASTER EGG TIME
 /*
-            
-      
-      
       <div className={styles.description}>className={styles.main}
         <p>
           บางพลัดอาจจะเป็นแค่ชื่อเขต แต่เธอคือสาเหตุของความรัก&nbsp;

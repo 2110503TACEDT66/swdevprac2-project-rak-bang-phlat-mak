@@ -2,8 +2,6 @@ import { HospitalJson, HotelJson } from "../../interface";
 import Card from "./Card";
 import Link from "next/link";
 
-
-
 export default async function HospitalCatalog({
   hospitalsJson,
 }: {
@@ -25,14 +23,15 @@ export default async function HospitalCatalog({
         }}
       >
         {hospitalsJsonReady.data.map((hospitalItem) => (
-          <div className="w-full my-10">
-            <Link href={`/hospital/${hospitalItem.id}`}>
+          <div className="w-full h-auto my-5">
+            {/* <Link href={`/hospital/${hospitalItem.id}`}> */}
               <Card
                 hospitalName={hospitalItem.name}
                 link={`/hospital/${hospitalItem.id}`}
                 imgSrc="/img/parlor.jpg"
+                id={hospitalItem.id}
               />{" "}
-            </Link>
+            {/* </Link> */}
           </div>
         ))}
       </div>

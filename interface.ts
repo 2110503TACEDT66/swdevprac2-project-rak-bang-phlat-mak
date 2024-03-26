@@ -34,6 +34,7 @@ export interface HotelItem {
   reservations: HotelBooking[],//
   id: string  
 }
+
 export interface HotelBooking {
   _id: string,
   resDate: string,
@@ -42,7 +43,6 @@ export interface HotelBooking {
   createdAt: string,
   __v: number
 }
-
 
 export interface HotelJson{
   success: true,

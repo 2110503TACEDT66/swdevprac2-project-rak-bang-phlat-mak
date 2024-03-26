@@ -7,8 +7,6 @@ import { authOptions } from './api/auth/[...nextauth]/route'
 import NextAuthProvider from './providers/NextAuthProvider'
 import ReduxProvider from '@/redux/features/ReduxProvider'
 
-
-
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -24,17 +22,18 @@ export default async function RootLayout({
 
 
   const session = await getServerSession(authOptions)
+  
   return (
     <html lang="en">
       <body className={inter.className}>
         <ReduxProvider>
-        <NextAuthProvider session={session}>
-        <TopMenu/>
-        <div style={{marginTop:52}}>
-          {children}
-        </div>
-        </NextAuthProvider>
-</ReduxProvider>
+          <NextAuthProvider session={session}>
+            <TopMenu/>
+              <div style={{marginTop:52}}>
+                {children}
+            </div>
+          </NextAuthProvider>
+        </ReduxProvider>
 
         </body>
     </html>
