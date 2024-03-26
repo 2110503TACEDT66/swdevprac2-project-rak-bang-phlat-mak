@@ -1,7 +1,7 @@
 'use client'
 
 import userSignup from "@/libs/userSignup"
-import { MenuItem, TextField } from "@mui/material"
+import { MenuItem, Select, TextField } from "@mui/material"
 import { useState } from "react"
 
 
@@ -42,11 +42,11 @@ export default function signupPage(){
       </div>
       
         <div>
-        <select name="role" value={role} onChange={(e)=>{setRole(e.target.value)} } >
-        <MenuItem value="admin">Chulalongkorn Hospital</MenuItem>
-                <MenuItem value="user"> Rajavithi Hospital </MenuItem>
+        <Select name="role" value={role} onChange={(e)=>{setRole(e.target.value)} }className="h-[2em] w-[200px]" variant="standard" >
+        <MenuItem value="admin" >admin</MenuItem>
+                <MenuItem value="user"> user </MenuItem>
 
-        </select>
+        </Select>
         <label>Citizen ID</label>
       </div>
       <button onClick={()=>{

@@ -15,7 +15,7 @@ export default async function userSignup(name:string,tel:string,email:string,pas
             email:{email},
             password:{password},
             role:{role}
-        }),
+        })
     })
     if(!response.ok){
         throw new Error("Fail to log-in")
