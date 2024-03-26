@@ -12,10 +12,3 @@ export default function BookingPageLayout ({children}:{children:React.ReactNode}
         </div>
     );
 }
-
-
-
-/*
-
-
-*/

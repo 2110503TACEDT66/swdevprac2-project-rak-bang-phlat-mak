@@ -1,5 +1,5 @@
 export default async function userSignup(name:string,tel:string,email:string,password:string){
-    const response = await fetch("http://localhost:5000//api/v1/auth/register",{
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/auth/register`,{
         method:"POST",
         headers:{
             "Content-Type":"application/json",
@@ -12,8 +12,9 @@ export default async function userSignup(name:string,tel:string,email:string,pas
             role: "user"
         })
     })
+
     if(!response.ok){
-        throw new Error("Fail to log-in")
+        throw new Error("Failed to log-in")
     }
 
     return await response.json()

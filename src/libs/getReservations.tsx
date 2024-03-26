@@ -1,11 +1,18 @@
 import {resolve} from "path"
 
-export default async function getReservations() {
+export default async function getReservations(token:string) {
 
     //Funny 5 second delay
     // await new Promise((resolve)=>setTimeout(resolve, 5000))
 
-    const response = await fetch(`${process.env.BACKEND_URL}/api/v1/reservations`, {next:{tags:['reservations']}})
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/reservations`, {
+        method: 'GET',
+        next:{tags:['reservations']},
+        headers: {
+            authorization:`Bearer ${token}`
+        }
+        },
+    )
     const data = await response.json();
 
     if (!(response.ok)) {

@@ -5,7 +5,6 @@ import { AppDispatch } from "@/redux/store";
 import { useDispatch } from "react-redux";
 import { SetStateAction, useRef, useState } from "react";
 import dayjs, { Dayjs } from "dayjs";
-import { BookingItem, ReservationItem } from "../../../../../interface";
 import { useParams, useRouter } from "next/navigation";
 import postReservation from "@/libs/postReservation";
 import { useSession } from "next-auth/react";
@@ -14,6 +13,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { dbConnect } from "@/db/dbConnect";
 import addReservation from "@/libs/addReservation";
+import Reservation from "@/db/models/Reservation";
 
 export default function Booking () {
     const router = useRouter()
@@ -30,16 +30,15 @@ export default function Booking () {
     const [date, setDate] = useState<Dayjs|null>(null)
 
     const handlerSubmit = () => {
-        const formattedDate = dayjs(date).format("YYYY/MM/DD")
-
-        // if (userID && shopID && date) {
-        //     const item:ReservationItem = {
-        //         resDate: formattedDate,
-        //         user: userID,
-        //         shop: shopID,
-        //     }
-        //     dispatch(addReservation(item))
-        // }
+        if (userID && shopID && date && token) {
+            const formattedDate = dayjs(date).format("YYYY-MM-DD[T]HH:mm:ss.SSS[Z]")
+            console.log(formattedDate)
+            try {
+            postReservation(userID, shopID, formattedDate, token)
+            } catch(error) {
+                alert(error)
+            }
+        }
     }
 
     return (

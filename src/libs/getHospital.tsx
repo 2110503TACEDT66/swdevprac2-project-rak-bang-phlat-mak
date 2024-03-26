@@ -1,6 +1,6 @@
 export default async function  getHospital(id:string) {
     
-    const response = await fetch(`http://localhost:5000/api/v1/shops/${id}`)
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/shops/${id}`)
     if(!response.ok){
         throw new Error("Fail")
     }
