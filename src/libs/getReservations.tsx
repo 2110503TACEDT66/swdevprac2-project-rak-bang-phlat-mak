@@ -13,11 +13,10 @@ export default async function getReservations(token:string) {
         }
         },
     )
-    const data = await response.json();
-
+    
     if (!(response.ok)) {
         throw new Error("Failed to fetch reservation")
     }
 
-    return data
+    return await response.json()
 }

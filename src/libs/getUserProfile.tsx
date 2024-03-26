@@ -1,7 +1,7 @@
 export default async function  getUserProfile(token:string) {
     
     await new Promise((resolve)=>setTimeout(resolve,1000))
-    const response = await fetch("https://vaccine-app-backend.vercel.app/api/v1/auth/me",{
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/auth/me`,{
         headers:{
             authorization:`Bearer ${token}`
         }

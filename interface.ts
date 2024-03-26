@@ -34,11 +34,12 @@ export interface HotelItem {
   reservations: HotelBooking[],//
   id: string  
 }
+
 export interface HotelBooking {
   _id: string,
   resDate: string,
   user: string,
-  shop: string,
+  shop: Shop,
   createdAt: string,
   __v: number
 }
@@ -48,4 +49,30 @@ export interface HotelJson{
   success: true,
   count: 25,
   data: HotelItem[]
+}
+
+export interface ReservationJson{
+  success: boolean,
+  count: number,
+  data: HotelBooking[]
+}
+
+export interface Shop{
+  _id: string,//
+  name: string,//
+  address: string,//
+  tel: string,//
+  openclose: string,
+  __v: number,//
+  reservations: HotelBooking[],//
+  id: string  
+}
+
+export interface ReservationItem{
+  _id: string,
+  resDate: string,
+  user: string,
+  shop: Shop,
+  createdAt: string,
+  __v: number
 }
