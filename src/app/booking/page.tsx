@@ -1,4 +1,4 @@
-'use client'
+
 import { TextField } from "@mui/material";
 import DateReserve from "@/components/DateReserve";
 import { useState } from "react";
@@ -8,9 +8,12 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/redux/store";
 import { addBooking } from "@/redux/features/bookSlice";
 import { useSession } from "next-auth/react";
+import getHospitals from "@/libs/getHospitals";
 
-export default function BookingPage() {
-  const {data :session} = useSession()
+export default async function BookingPage() {
+  const hotelsJson=getHospitals()
+    const hotelsJsonReady = await hotelsJson
+  /*const {data :session} = useSession()
   const [bookingDate, setBookingDate] = useState<Dayjs | null>(null);
   const [location, setLocation] = useState<string | null>(null);
   const dispatch = useDispatch<AppDispatch>()
@@ -38,9 +41,9 @@ export default function BookingPage() {
       };
       dispatch(addBooking(item))
     }
-  };
+  };*/
   return (
-    <div>
+    /*<div>
       <div>
         <TextField name="Name" />
         <label>Name</label>
@@ -54,21 +57,27 @@ export default function BookingPage() {
         <label>Citizen ID</label>
       </div>
       <DateReserve
-        onDateChange={(value: Dayjs) => {
-          setBookingDate(value);
+        onDateChange={(//value: Dayjs) => {
+          setBookingDate(value)
         }}
         onLocationCange={(value: string) => {
-          setLocation(value);
+          setLocation(value)
         }}
       />
 
       <button
         className="block rounded-md bg-sky-600 hover:bg-indigo-600 px-3 py-2 text-white shadow-sm"
-        onClick={makeBooking}
+        //onClick={makeBooking}
       >
         {" "}
         Check Car Avaibility
       </button>
-    </div>
+    </div>*/
+    <>
+    <DateReserve hotelsJson={hotelsJsonReady}
+    
+    
+    />
+    </>
   );
 }
