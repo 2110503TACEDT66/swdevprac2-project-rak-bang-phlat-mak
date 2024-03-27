@@ -21,7 +21,7 @@ export default async function CardReservation({shop, resDate, token, resID}:{sho
     const day = String(dateObj.getDate()).padStart(2, '0')
     const month = dateObj.toLocaleString('default', {month: 'long'})
     const year = dateObj.getFullYear()
-    const hours = String(dateObj.getHours()).padStart(2, '0')
+    const hours = String(dateObj.getHours()-7).padStart(2, '0')
     const minutes = String(dateObj.getMinutes()).padStart(2, '0')
 
     const fullTime = `${day} ${month} ${year}, ${hours}:${minutes}`
